@@ -57,3 +57,8 @@ docker logs jenkins-typescript-react-boilerplate
 docker container exec -it jenkins-typescript-react-boilerplate bash
 ```
 
+9. Print the docker jenkins password. 
+```
+docker container exec -it jenkins-typescript-react-boilerplate bash \
+sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+```

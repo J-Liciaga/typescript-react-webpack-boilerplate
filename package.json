@@ -6,6 +6,7 @@
     "author": "Josiah Liciaga-Silva <josiah.liciagasilva@pm.me",
     "scripts": {
         "start": "webpack serve --config config/webpack/webpack.dev.js",
+        "postinstall": "husky install",
         "build": "webpack --config config/webpack/webpack.prod.js",
         "format-project": "rm -rf node_modules .cache yarn.lock",
         "clean": "rm dist/bundle.js",
