@@ -1,6 +1,8 @@
 const { merge } = require("webpack-merge");
+const webpack = require("webpack");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CSSMinimizerPlugin = require("css-minimizer-webpack-plugin");
+const TerserPlugin = require('terser-webpack-plugin');
 const paths = require("./paths");
 const common = require("./webpack.common");
 
@@ -36,16 +38,27 @@ module.exports = merge(common, {
             filename: "styles/[name].[contentHash].css",
             chunkFilename: "[id].css",
         }),
+        new webpack.ids.DeterministicModuleIdsPlugin({
+            maxLength: 5,
+          }),
     ],
     optimization: {
         minimize: true,
+        flagIncludedChunks: true,
         minimizer: [ 
+            new TerserPlugin({
+                parallel: true,
+                // terserOptions: {
+                //     https://github.com/webpack-contrib/terser-webpack-plugin#terseroptions
+                // }
+            }),
             new CSSMinimizerPlugin(),
             "..."
         ],
         runtimeChunk: {
-            name: "runtime",
+            name: (entrypoint) => `runtime~${entrypoint.name}`,
         },
+        moduleIds: "deterministic",
         splitChunks: {
             cacheGroups: {
                 /**
@@ -65,7 +78,7 @@ module.exports = merge(common, {
         }
     },
     performance: {
-        hints: true,
+        hints: "warning",
         maxEntrypointSize: 512000,
         maxAssetSize: 512000,
     },
