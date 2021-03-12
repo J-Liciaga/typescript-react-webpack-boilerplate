@@ -14,8 +14,9 @@ module.exports = merge(common, {
         hot: true,
         port: 8080,
     },
-    resolve: {
-        extensions: [".js", ".json"]
+    stats: {
+        errorDetails: true,
+        children: true,
     },
     module: {
         rules: [
@@ -28,7 +29,6 @@ module.exports = merge(common, {
                         options: {
                             sourceMap: true,
                             importLoaders: 1,
-                            modules: true,
                         },
                     },
                     {

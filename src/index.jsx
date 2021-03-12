@@ -1,7 +1,9 @@
 import * as React from "react";
 import { render } from "react-dom";
+
 import App from "./App";
+import "./styles.css";
 
-const root = document.getElementById("root");
+const app = document.getElementById("app");
 
-render(<App />, root);
+render(<App />, app);

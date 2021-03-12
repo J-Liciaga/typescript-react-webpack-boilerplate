@@ -9,6 +9,15 @@ lerna-debug.log*
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
 # Runtime data
 pids
 *.pid
@@ -85,6 +94,8 @@ out
 # Nuxt.js build / generate output
 .nuxt
 dist
+!dist/index.html
+dist/*
 
 # Gatsby files
 .cache/
