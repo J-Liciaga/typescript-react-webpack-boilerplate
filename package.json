@@ -10,6 +10,7 @@
         "build": "webpack --config config/webpack/webpack.prod.js",
         "format-project": "rm -rf node_modules .cache yarn.lock",
         "clean": "rm dist/bundle.js",
+        "lint": "eslint --ext .js,.jsx,.ts,.tsx",
         "test": "jest",
         "cypress:open": "cypress open",
         "cypress:verify": "npx cypress verify"
